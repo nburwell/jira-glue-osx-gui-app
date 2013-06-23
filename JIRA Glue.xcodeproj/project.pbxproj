@@ -30,10 +30,10 @@
 		06BDD92D177648DA0014449C /* JIRA Glue.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "JIRA Glue.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		06BDD930177648DA0014449C /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		06BDD932177648DA0014449C /* MacRuby.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MacRuby.framework; path = Library/Frameworks/MacRuby.framework; sourceTree = DEVELOPER_DIR; };
-		06BDD939177648DA0014449C /* JIRA Glue-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "JIRA Glue-Info.plist"; path = "JIRA Glue/JIRA Glue-Info.plist"; sourceTree = "<group>"; };
+		06BDD939177648DA0014449C /* JIRA Glue-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "JIRA Glue-Info.plist"; sourceTree = "<group>"; };
 		06BDD93B177648DA0014449C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		06BDD93D177648DA0014449C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = main.m; path = "JIRA Glue/main.m"; sourceTree = "<group>"; };
-		06BDD93F177648DA0014449C /* JIRA Glue-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "JIRA Glue-Prefix.pch"; path = "JIRA Glue/JIRA Glue-Prefix.pch"; sourceTree = "<group>"; };
+		06BDD93F177648DA0014449C /* JIRA Glue-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "JIRA Glue-Prefix.pch"; sourceTree = "<group>"; };
 		06BDD942177648DA0014449C /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		06BDD945177648DA0014449C /* rb_main.rb */ = {isa = PBXFileReference; lastKnownFileType = text.script.ruby; name = rb_main.rb; path = "JIRA Glue/rb_main.rb"; sourceTree = "<group>"; };
 		06BDD947177648DA0014449C /* AppDelegate.rb */ = {isa = PBXFileReference; lastKnownFileType = text.script.ruby; name = AppDelegate.rb; path = "JIRA Glue/AppDelegate.rb"; sourceTree = "<group>"; };
@@ -58,8 +58,6 @@
 				06BDD940177648DA0014449C /* Resources */,
 				06BDD945177648DA0014449C /* rb_main.rb */,
 				06BDD947177648DA0014449C /* AppDelegate.rb */,
-				06BDD93F177648DA0014449C /* JIRA Glue-Prefix.pch */,
-				06BDD939177648DA0014449C /* JIRA Glue-Info.plist */,
 				06BDD93D177648DA0014449C /* main.m */,
 				06BDD92F177648DA0014449C /* Frameworks */,
 				06BDD92E177648DA0014449C /* Products */,
@@ -86,6 +84,8 @@
 		06BDD940177648DA0014449C /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				06BDD93F177648DA0014449C /* JIRA Glue-Prefix.pch */,
+				06BDD939177648DA0014449C /* JIRA Glue-Info.plist */,
 				06BDD941177648DA0014449C /* MainMenu.xib */,
 				06BDD93A177648DA0014449C /* InfoPlist.strings */,
 			);
