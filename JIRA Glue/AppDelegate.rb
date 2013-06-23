@@ -18,12 +18,6 @@ class AppDelegate
     require 'rubygems'
     require 'jira'
     require 'openssl'
-
-    # TODO
-    #  * put search on background thread
-    #  * ideally do start-up on background thread too..
-    #  X put on clipboard
-    #  X put on clipboard as HTML
     
     JIRA_BASE_URL = "https://ringrevenue.atlassian.net"
     
@@ -54,25 +48,25 @@ class AppDelegate
         else
             labelStatus.setStringValue("Searching for issue...")
             
-            begin
-                issue = jira_client.Issue.find(textFieldKey.stringValue)
-                
-                url = "#{JIRA_BASE_URL}/issues/#{issue.key}"
-                key = "#{issue.key}: #{issue.summary}"
-                textFieldOutput.setStringValue(key)
-                labelStatus.setStringValue("")
-                
-                if checkboxClipboard.state == NSOnState
+            queue = Dispatch::Queue.concurrent
+            queue.async do
+                begin
+                    issue = jira_client.Issue.find(textFieldKey.stringValue)
                     
-                    NSLog("copy to clipboard!")
+                    url = "#{JIRA_BASE_URL}/browse/#{issue.key}"
+                    key = "#{issue.key}: #{issue.summary}"
+                    textFieldOutput.setStringValue(key)
+                    labelStatus.setStringValue("")
                     
-                    pasteBoard = NSPasteboard.generalPasteboard
-                    pasteBoard.declareTypes([NSHTMLPboardType, NSStringPboardType], owner: nil)
-                    pasteBoard.setString("<a href=\"#{url}\">#{issue.key}</a>: #{issue.summary}", forType: NSHTMLPboardType)
-                    pasteBoard.setString("#{key}", forType: NSStringPboardType)
+                    if checkboxClipboard.state == NSOnState
+                        pasteBoard = NSPasteboard.generalPasteboard
+                        pasteBoard.declareTypes([NSHTMLPboardType, NSStringPboardType], owner: nil)
+                        pasteBoard.setString("<a href=\"#{url}\">#{issue.key}</a>: #{issue.summary}", forType: NSHTMLPboardType)
+                        pasteBoard.setString("#{key}", forType: NSStringPboardType)
+                    end
+                rescue JIRA::HTTPError => ex
+                    labelStatus.setStringValue("JIRA issue not found")
                 end
-            rescue JIRA::HTTPError => ex
-                labelStatus.setStringValue("JIRA issue not found")
             end
         end
     end
