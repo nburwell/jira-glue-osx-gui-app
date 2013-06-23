@@ -1,0 +1,351 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		06BDD931177648DA0014449C /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06BDD930177648DA0014449C /* Cocoa.framework */; };
+		06BDD933177648DA0014449C /* MacRuby.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06BDD932177648DA0014449C /* MacRuby.framework */; };
+		06BDD93C177648DA0014449C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 06BDD93A177648DA0014449C /* InfoPlist.strings */; };
+		06BDD93E177648DA0014449C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 06BDD93D177648DA0014449C /* main.m */; };
+		06BDD943177648DA0014449C /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 06BDD941177648DA0014449C /* MainMenu.xib */; };
+		06BDD946177648DA0014449C /* rb_main.rb in Resources */ = {isa = PBXBuildFile; fileRef = 06BDD945177648DA0014449C /* rb_main.rb */; };
+		06BDD948177648DA0014449C /* AppDelegate.rb in Resources */ = {isa = PBXBuildFile; fileRef = 06BDD947177648DA0014449C /* AppDelegate.rb */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		06BDD935177648DA0014449C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 06BDD925177648DA0014449C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 06BDD92C177648DA0014449C;
+			remoteInfo = "JIRA Glue";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		06BDD92D177648DA0014449C /* JIRA Glue.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "JIRA Glue.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		06BDD930177648DA0014449C /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		06BDD932177648DA0014449C /* MacRuby.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MacRuby.framework; path = Library/Frameworks/MacRuby.framework; sourceTree = DEVELOPER_DIR; };
+		06BDD939177648DA0014449C /* JIRA Glue-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "JIRA Glue-Info.plist"; path = "JIRA Glue/JIRA Glue-Info.plist"; sourceTree = "<group>"; };
+		06BDD93B177648DA0014449C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		06BDD93D177648DA0014449C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = main.m; path = "JIRA Glue/main.m"; sourceTree = "<group>"; };
+		06BDD93F177648DA0014449C /* JIRA Glue-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "JIRA Glue-Prefix.pch"; path = "JIRA Glue/JIRA Glue-Prefix.pch"; sourceTree = "<group>"; };
+		06BDD942177648DA0014449C /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		06BDD945177648DA0014449C /* rb_main.rb */ = {isa = PBXFileReference; lastKnownFileType = text.script.ruby; name = rb_main.rb; path = "JIRA Glue/rb_main.rb"; sourceTree = "<group>"; };
+		06BDD947177648DA0014449C /* AppDelegate.rb */ = {isa = PBXFileReference; lastKnownFileType = text.script.ruby; name = AppDelegate.rb; path = "JIRA Glue/AppDelegate.rb"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		06BDD92A177648DA0014449C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				06BDD931177648DA0014449C /* Cocoa.framework in Frameworks */,
+				06BDD933177648DA0014449C /* MacRuby.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		06BDD924177648DA0014449C = {
+			isa = PBXGroup;
+			children = (
+				06BDD940177648DA0014449C /* Resources */,
+				06BDD945177648DA0014449C /* rb_main.rb */,
+				06BDD947177648DA0014449C /* AppDelegate.rb */,
+				06BDD93F177648DA0014449C /* JIRA Glue-Prefix.pch */,
+				06BDD939177648DA0014449C /* JIRA Glue-Info.plist */,
+				06BDD93D177648DA0014449C /* main.m */,
+				06BDD92F177648DA0014449C /* Frameworks */,
+				06BDD92E177648DA0014449C /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		06BDD92E177648DA0014449C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				06BDD92D177648DA0014449C /* JIRA Glue.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		06BDD92F177648DA0014449C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				06BDD930177648DA0014449C /* Cocoa.framework */,
+				06BDD932177648DA0014449C /* MacRuby.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		06BDD940177648DA0014449C /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				06BDD941177648DA0014449C /* MainMenu.xib */,
+				06BDD93A177648DA0014449C /* InfoPlist.strings */,
+			);
+			name = Resources;
+			path = "JIRA Glue";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXLegacyTarget section */
+		06BDD934177648DA0014449C /* Deployment */ = {
+			isa = PBXLegacyTarget;
+			buildArgumentsString = "--compile --embed";
+			buildConfigurationList = 06BDD94E177648DA0014449C /* Build configuration list for PBXLegacyTarget "Deployment" */;
+			buildPhases = (
+			);
+			buildToolPath = /usr/local/bin/macruby_deploy;
+			dependencies = (
+				06BDD936177648DA0014449C /* PBXTargetDependency */,
+			);
+			name = Deployment;
+			passBuildSettingsInEnvironment = 1;
+			productName = Deployment;
+		};
+/* End PBXLegacyTarget section */
+
+/* Begin PBXNativeTarget section */
+		06BDD92C177648DA0014449C /* JIRA Glue */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 06BDD94B177648DA0014449C /* Build configuration list for PBXNativeTarget "JIRA Glue" */;
+			buildPhases = (
+				06BDD929177648DA0014449C /* Sources */,
+				06BDD92A177648DA0014449C /* Frameworks */,
+				06BDD92B177648DA0014449C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "JIRA Glue";
+			productName = "JIRA Glue";
+			productReference = 06BDD92D177648DA0014449C /* JIRA Glue.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		06BDD925177648DA0014449C /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0460;
+				ORGANIZATIONNAME = "Burwell Designs";
+			};
+			buildConfigurationList = 06BDD928177648DA0014449C /* Build configuration list for PBXProject "JIRA Glue" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 06BDD924177648DA0014449C;
+			productRefGroup = 06BDD92E177648DA0014449C /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				06BDD92C177648DA0014449C /* JIRA Glue */,
+				06BDD934177648DA0014449C /* Deployment */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		06BDD92B177648DA0014449C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				06BDD93C177648DA0014449C /* InfoPlist.strings in Resources */,
+				06BDD943177648DA0014449C /* MainMenu.xib in Resources */,
+				06BDD946177648DA0014449C /* rb_main.rb in Resources */,
+				06BDD948177648DA0014449C /* AppDelegate.rb in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		06BDD929177648DA0014449C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				06BDD93E177648DA0014449C /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		06BDD936177648DA0014449C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 06BDD92C177648DA0014449C /* JIRA Glue */;
+			targetProxy = 06BDD935177648DA0014449C /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		06BDD93A177648DA0014449C /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				06BDD93B177648DA0014449C /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		06BDD941177648DA0014449C /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				06BDD942177648DA0014449C /* en */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		06BDD949177648DA0014449C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		06BDD94A177648DA0014449C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		06BDD94C177648DA0014449C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = x86_64;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SYSTEM_APPS_DIR)/Xcode.app/Contents/Developer/Library/Frameworks\"",
+					/Library/Frameworks,
+				);
+				GCC_ENABLE_OBJC_GC = required;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "JIRA Glue/JIRA Glue-Prefix.pch";
+				INFOPLIST_FILE = "JIRA Glue/JIRA Glue-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		06BDD94D177648DA0014449C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = x86_64;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SYSTEM_APPS_DIR)/Xcode.app/Contents/Developer/Library/Frameworks\"",
+					/Library/Frameworks,
+				);
+				GCC_ENABLE_OBJC_GC = required;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "JIRA Glue/JIRA Glue-Prefix.pch";
+				INFOPLIST_FILE = "JIRA Glue/JIRA Glue-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		06BDD94F177648DA0014449C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+			};
+			name = Debug;
+		};
+		06BDD950177648DA0014449C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		06BDD928177648DA0014449C /* Build configuration list for PBXProject "JIRA Glue" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				06BDD949177648DA0014449C /* Debug */,
+				06BDD94A177648DA0014449C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		06BDD94B177648DA0014449C /* Build configuration list for PBXNativeTarget "JIRA Glue" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				06BDD94C177648DA0014449C /* Debug */,
+				06BDD94D177648DA0014449C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		06BDD94E177648DA0014449C /* Build configuration list for PBXLegacyTarget "Deployment" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				06BDD94F177648DA0014449C /* Debug */,
+				06BDD950177648DA0014449C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 06BDD925177648DA0014449C /* Project object */;
+}
