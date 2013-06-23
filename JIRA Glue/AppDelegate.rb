@@ -38,7 +38,7 @@ class AppDelegate
         labelStatus.setStringValue("")
     end
     
-    def onButtonClick(sender)
+    def onSearchButtonClick(sender)
         labelStatus.setStringValue("")
         textFieldOutput.setStringValue("")
         
@@ -46,27 +46,49 @@ class AppDelegate
             labelStatus.setStringValue("Please enter a JIRA key")
             NSLog("nothing to do")
         else
-            labelStatus.setStringValue("Searching for issue...")
+            jiraSearch(textFieldKey.stringValue)
+        end
+    end
+    
+    def onBrowserButtonClick(sender)
+        script = NSAppleScript.alloc.initWithSource "tell application \"Google Chrome\" to get URL of active tab of front window as string"
+        scriptError = nil
+        descriptor = script.executeAndReturnError scriptError
+        
+        if (scriptError)
+            NSLog("Error: %@", scriptError)
+        else
+            url = descriptor.stringValue
             
-            queue = Dispatch::Queue.concurrent
-            queue.async do
-                begin
-                    issue = jira_client.Issue.find(textFieldKey.stringValue)
-                    
-                    url = "#{JIRA_BASE_URL}/browse/#{issue.key}"
-                    key = "#{issue.key}: #{issue.summary}"
-                    textFieldOutput.setStringValue(key)
-                    labelStatus.setStringValue("")
-                    
-                    if checkboxClipboard.state == NSOnState
-                        pasteBoard = NSPasteboard.generalPasteboard
-                        pasteBoard.declareTypes([NSHTMLPboardType, NSStringPboardType], owner: nil)
-                        pasteBoard.setString("<a href=\"#{url}\">#{issue.key}</a>: #{issue.summary}", forType: NSHTMLPboardType)
-                        pasteBoard.setString("#{key}", forType: NSStringPboardType)
-                    end
-                rescue JIRA::HTTPError => ex
-                    labelStatus.setStringValue("JIRA issue not found")
+            if matches = url.match(/ringrevenue.atlassian.net\/browse\/([^?]*)/)
+                jiraSearch(matches[1])
+            else
+                labelStatus.setStringValue("Browser is not viewing a JIRA issue")
+            end
+        end
+    end
+    
+    def jiraSearch(id)
+        labelStatus.setStringValue("Searching for issue...")
+        
+        queue = Dispatch::Queue.concurrent
+        queue.async do
+            begin
+                issue = jira_client.Issue.find(id)
+                
+                url = "#{JIRA_BASE_URL}/browse/#{issue.key}"
+                key = "#{issue.key}: #{issue.summary}"
+                textFieldOutput.setStringValue(key)
+                labelStatus.setStringValue("")
+                
+                if checkboxClipboard.state == NSOnState
+                    pasteBoard = NSPasteboard.generalPasteboard
+                    pasteBoard.declareTypes([NSHTMLPboardType, NSStringPboardType], owner: nil)
+                    pasteBoard.setString("<a href=\"#{url}\">#{issue.key}</a>: #{issue.summary}", forType: NSHTMLPboardType)
+                    pasteBoard.setString("#{key}", forType: NSStringPboardType)
                 end
+                rescue JIRA::HTTPError => ex
+                labelStatus.setStringValue("JIRA issue not found")
             end
         end
     end
