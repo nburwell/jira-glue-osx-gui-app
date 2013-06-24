@@ -6,6 +6,12 @@
 #  Copyright 2013 Burwell Designs. All rights reserved.
 #
 
+# TODO
+# * Make the 'browser' button a keyboard hot-key
+# * Make hot-key configurable in preferences
+# * Make browser configurable in preferences
+
+
 class AppDelegate
     attr_accessor :window
     attr_accessor :textFieldKey
@@ -22,8 +28,8 @@ class AppDelegate
     JIRA_BASE_URL = "https://ringrevenue.atlassian.net"
     
     JIRA_CLIENT_OPTIONS = {
-    :username        => "development",
-    :password        => "6gsvnknFocQ6Te",
+    :username        => "",
+    :password        => "",
     :site            => JIRA_BASE_URL,
     :context_path    => "",
     :auth_type       => :basic,
