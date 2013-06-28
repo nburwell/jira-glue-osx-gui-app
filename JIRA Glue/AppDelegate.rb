@@ -20,6 +20,7 @@ class AppDelegate
     attr_accessor :checkboxClipboard
     
     attr_accessor :jira_client
+    attr_accessor :config
     
     require 'rubygems'
     require 'jira'
@@ -27,21 +28,46 @@ class AppDelegate
     
     JIRA_BASE_URL = "https://ringrevenue.atlassian.net"
     
-    JIRA_CLIENT_OPTIONS = {
-    :username        => "",
-    :password        => "",
-    :site            => JIRA_BASE_URL,
-    :context_path    => "",
-    :auth_type       => :basic,
-    :use_ssl         => true,
-    :ssl_verify_mode => OpenSSL::SSL::VERIFY_NONE,
-    }
+    
+    def observeValueForKeyPath(keyPath, ofObject:id, change:change, context:context)
+        login_to_jira
+    end
     
     def applicationDidFinishLaunching(a_notification)
         # Insert code here to initialize your application
         
-        self.jira_client = JIRA::Client.new(JIRA_CLIENT_OPTIONS)
-        labelStatus.setStringValue("")
+        self.config = NSUserDefaults.standardUserDefaults
+        self.config.addObserver(self,
+                                forKeyPath: "jira_username",
+                                options: NSKeyValueObservingOptionNew,
+                                context: nil)
+        
+        self.config.addObserver(self,
+                                forKeyPath: "jira_password",
+                                options: NSKeyValueObservingOptionNew,
+                                context: nil)
+        
+        login_to_jira
+    end
+    
+    def login_to_jira
+        labelStatus.setStringValue("Connecting to JIRA...")
+        
+        queue = Dispatch::Queue.concurrent
+        queue.async do
+            jira_client_options = {
+                :username        => self.config.stringForKey("jira_username"),
+                :password        => self.config.stringForKey("jira_password"),
+                :site            => JIRA_BASE_URL,
+                :context_path    => "",
+                :auth_type       => :basic,
+                :use_ssl         => true,
+                :ssl_verify_mode => OpenSSL::SSL::VERIFY_NONE,
+            }
+
+            self.jira_client = JIRA::Client.new(jira_client_options)
+            labelStatus.setStringValue("")
+        end
     end
     
     def onSearchButtonClick(sender)
@@ -50,7 +76,7 @@ class AppDelegate
         
         if textFieldKey.stringValue == ""
             labelStatus.setStringValue("Please enter a JIRA key")
-            NSLog("nothing to do")
+            NSLog("Nothing entered")
         else
             jiraSearch(textFieldKey.stringValue)
         end
@@ -80,6 +106,11 @@ class AppDelegate
         queue = Dispatch::Queue.concurrent
         queue.async do
             begin
+                if id.match(/\A\d/)
+                    project_key = self.config.stringForKey("default_project")
+                    puts "Using default project: #{project_key}"
+                    id = "#{project_key}-#{id}"
+                end
                 issue = jira_client.Issue.find(id)
                 
                 url = "#{JIRA_BASE_URL}/browse/#{issue.key}"
@@ -93,10 +124,13 @@ class AppDelegate
                     pasteBoard.setString("<a href=\"#{url}\">#{issue.key}</a>: #{issue.summary}", forType: NSHTMLPboardType)
                     pasteBoard.setString("#{key}", forType: NSStringPboardType)
                 end
-                rescue JIRA::HTTPError => ex
-                labelStatus.setStringValue("JIRA issue not found")
+            rescue JIRA::HTTPError => ex
+                if ex.message == "Unauthorized"
+                    labelStatus.setStringValue("Could not log into JIRA. Update app preferences.")
+                else
+                    labelStatus.setStringValue("JIRA issue not found")
+                end
             end
         end
     end
 end
-

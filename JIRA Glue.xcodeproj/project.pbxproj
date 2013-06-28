@@ -101,11 +101,12 @@
 /* Begin PBXLegacyTarget section */
 		06BDD934177648DA0014449C /* Deployment */ = {
 			isa = PBXLegacyTarget;
-			buildArgumentsString = "--compile --embed";
+			buildArgumentsString = "--compile --embed --gem";
 			buildConfigurationList = 06BDD94E177648DA0014449C /* Build configuration list for PBXLegacyTarget "Deployment" */;
 			buildPhases = (
 			);
 			buildToolPath = /usr/local/bin/macruby_deploy;
+			buildWorkingDirectory = "";
 			dependencies = (
 				06BDD936177648DA0014449C /* PBXTargetDependency */,
 			);
