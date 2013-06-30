@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		063F604C1780DCBC00BD283C /* client.rb in Resources */ = {isa = PBXBuildFile; fileRef = 063F604B1780DCBC00BD283C /* client.rb */; };
+		063F604F1780DEA200BD283C /* factory.rb in Resources */ = {isa = PBXBuildFile; fileRef = 063F604E1780DEA200BD283C /* factory.rb */; };
+		063F60511780DF2600BD283C /* base.rb in Resources */ = {isa = PBXBuildFile; fileRef = 063F60501780DF2600BD283C /* base.rb */; };
+		063F60531780DF7B00BD283C /* resource.rb in Resources */ = {isa = PBXBuildFile; fileRef = 063F60521780DF7B00BD283C /* resource.rb */; };
 		065CE3621776BF55003A8D25 /* glue.icns in Resources */ = {isa = PBXBuildFile; fileRef = 065CE3611776BF55003A8D25 /* glue.icns */; };
 		06BDD931177648DA0014449C /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06BDD930177648DA0014449C /* Cocoa.framework */; };
 		06BDD933177648DA0014449C /* MacRuby.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06BDD932177648DA0014449C /* MacRuby.framework */; };
@@ -28,6 +32,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		063F604B1780DCBC00BD283C /* client.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; name = client.rb; path = "JIRA Glue/jira/client.rb"; sourceTree = "<group>"; };
+		063F604E1780DEA200BD283C /* factory.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; name = factory.rb; path = "JIRA Glue/jira/factory.rb"; sourceTree = "<group>"; };
+		063F60501780DF2600BD283C /* base.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; name = base.rb; path = "JIRA Glue/jira/base.rb"; sourceTree = "<group>"; };
+		063F60521780DF7B00BD283C /* resource.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; name = resource.rb; path = "JIRA Glue/jira/resource.rb"; sourceTree = "<group>"; };
 		065CE3611776BF55003A8D25 /* glue.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = glue.icns; path = ../glue.icns; sourceTree = "<group>"; };
 		06BDD92D177648DA0014449C /* JIRA Glue.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "JIRA Glue.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		06BDD930177648DA0014449C /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
@@ -54,9 +62,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		063F604D1780DCC900BD283C /* jira */ = {
+			isa = PBXGroup;
+			children = (
+				063F604B1780DCBC00BD283C /* client.rb */,
+				063F604E1780DEA200BD283C /* factory.rb */,
+				063F60501780DF2600BD283C /* base.rb */,
+				063F60521780DF7B00BD283C /* resource.rb */,
+			);
+			name = jira;
+			sourceTree = "<group>";
+		};
 		06BDD924177648DA0014449C = {
 			isa = PBXGroup;
 			children = (
+				063F604D1780DCC900BD283C /* jira */,
 				06BDD940177648DA0014449C /* Resources */,
 				06BDD945177648DA0014449C /* rb_main.rb */,
 				06BDD947177648DA0014449C /* AppDelegate.rb */,
@@ -101,7 +121,7 @@
 /* Begin PBXLegacyTarget section */
 		06BDD934177648DA0014449C /* Deployment */ = {
 			isa = PBXLegacyTarget;
-			buildArgumentsString = "--compile --embed --gem";
+			buildArgumentsString = "--compile --embed";
 			buildConfigurationList = 06BDD94E177648DA0014449C /* Build configuration list for PBXLegacyTarget "Deployment" */;
 			buildPhases = (
 			);
@@ -171,6 +191,10 @@
 				06BDD946177648DA0014449C /* rb_main.rb in Resources */,
 				06BDD948177648DA0014449C /* AppDelegate.rb in Resources */,
 				065CE3621776BF55003A8D25 /* glue.icns in Resources */,
+				063F604C1780DCBC00BD283C /* client.rb in Resources */,
+				063F604F1780DEA200BD283C /* factory.rb in Resources */,
+				063F60511780DF2600BD283C /* base.rb in Resources */,
+				063F60531780DF7B00BD283C /* resource.rb in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -276,6 +300,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = x86_64;
+				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SYSTEM_APPS_DIR)/Xcode.app/Contents/Developer/Library/Frameworks\"",
@@ -294,6 +319,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = x86_64;
+				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SYSTEM_APPS_DIR)/Xcode.app/Contents/Developer/Library/Frameworks\"",
@@ -311,12 +337,14 @@
 		06BDD94F177648DA0014449C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
 			};
 			name = Debug;
 		};
 		06BDD950177648DA0014449C /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
 			};
 			name = Release;
 		};

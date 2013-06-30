@@ -11,6 +11,8 @@
 # * Make hot-key configurable in preferences
 # * Make browser configurable in preferences
 
+NSLog("Launching JIRA Glue!")
+
 
 class AppDelegate
     attr_accessor :window
@@ -23,8 +25,8 @@ class AppDelegate
     attr_accessor :config
     
     require 'rubygems'
-    require 'jira'
-    require 'openssl'
+    require 'json'
+    require 'net/https'
     
     JIRA_BASE_URL = "https://ringrevenue.atlassian.net"
     
@@ -108,7 +110,6 @@ class AppDelegate
             begin
                 if id.match(/\A\d/)
                     project_key = self.config.stringForKey("default_project")
-                    puts "Using default project: #{project_key}"
                     id = "#{project_key}-#{id}"
                 end
                 issue = jira_client.Issue.find(id)
@@ -128,7 +129,7 @@ class AppDelegate
                 if ex.message == "Unauthorized"
                     labelStatus.setStringValue("Could not log into JIRA. Update app preferences.")
                 else
-                    labelStatus.setStringValue("JIRA issue not found")
+                    labelStatus.setStringValue("JIRA issue not found.")
                 end
             end
         end
