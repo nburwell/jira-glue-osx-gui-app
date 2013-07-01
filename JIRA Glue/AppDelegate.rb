@@ -19,6 +19,7 @@ class AppDelegate
     attr_accessor :textFieldKey
     attr_accessor :textFieldOutput
     attr_accessor :labelStatus
+    attr_accessor :progressBar
     attr_accessor :checkboxClipboard
     
     attr_accessor :jira_client
@@ -27,6 +28,7 @@ class AppDelegate
     require 'rubygems'
     require 'json'
     require 'net/https'
+    require 'hotkeys'
     
     JIRA_BASE_URL = "https://ringrevenue.atlassian.net"
     
@@ -50,6 +52,11 @@ class AppDelegate
                                 context: nil)
         
         login_to_jira
+
+        @hotkeys = HotKeys.new
+        @hotkeys.addHotString("J+CONTROL") do
+            getIssueFromBrowser()
+        end
     end
     
     def login_to_jira
@@ -69,6 +76,7 @@ class AppDelegate
 
             self.jira_client = JIRA::Client.new(jira_client_options)
             labelStatus.setStringValue("")
+            progressBar.stopAnimation(self)
         end
     end
     
@@ -85,25 +93,12 @@ class AppDelegate
     end
     
     def onBrowserButtonClick(sender)
-        script = NSAppleScript.alloc.initWithSource "tell application \"Google Chrome\" to get URL of active tab of front window as string"
-        scriptError = nil
-        descriptor = script.executeAndReturnError scriptError
-        
-        if (scriptError)
-            NSLog("Error: %@", scriptError)
-        else
-            url = descriptor.stringValue
-            
-            if matches = url.match(/ringrevenue.atlassian.net\/browse\/([^?]*)/)
-                jiraSearch(matches[1])
-            else
-                labelStatus.setStringValue("Browser is not viewing a JIRA issue")
-            end
-        end
+        getIssueFromBrowser()
     end
     
     def jiraSearch(id)
         labelStatus.setStringValue("Searching for issue...")
+        progressBar.startAnimation(self)
         
         queue = Dispatch::Queue.concurrent
         queue.async do
@@ -118,6 +113,7 @@ class AppDelegate
                 key = "#{issue.key}: #{issue.summary}"
                 textFieldOutput.setStringValue(key)
                 labelStatus.setStringValue("")
+                progressBar.stopAnimation(self)
                 
                 if checkboxClipboard.state == NSOnState
                     pasteBoard = NSPasteboard.generalPasteboard
@@ -131,6 +127,27 @@ class AppDelegate
                 else
                     labelStatus.setStringValue("JIRA issue not found.")
                 end
+                progressBar.stopAnimation(self)
+            end
+        end
+    end
+    
+    private
+    
+    def getIssueFromBrowser
+        script = NSAppleScript.alloc.initWithSource "tell application \"Google Chrome\" to get URL of active tab of front window as string"
+        scriptError = nil
+        descriptor = script.executeAndReturnError scriptError
+        
+        if (scriptError)
+            NSLog("Error: %@", scriptError)
+        else
+            url = descriptor.stringValue
+            
+            if matches = url.match(/ringrevenue.atlassian.net\/browse\/([^?]*)/)
+                jiraSearch(matches[1])
+            else
+                labelStatus.setStringValue("Browser is not viewing a JIRA issue")
             end
         end
     end

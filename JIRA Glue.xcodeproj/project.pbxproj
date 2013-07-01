@@ -121,7 +121,7 @@
 /* Begin PBXLegacyTarget section */
 		06BDD934177648DA0014449C /* Deployment */ = {
 			isa = PBXLegacyTarget;
-			buildArgumentsString = "--compile --embed";
+			buildArgumentsString = "--compile --embed --gem hotkeys";
 			buildConfigurationList = 06BDD94E177648DA0014449C /* Build configuration list for PBXLegacyTarget "Deployment" */;
 			buildPhases = (
 			);
