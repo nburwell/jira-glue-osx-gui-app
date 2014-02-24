@@ -1,4 +1,4 @@
-jira-glue
+Jira Glue OS X App (deprecated)
 =========
 
 Small OS X utility app for JIRA tracking system
